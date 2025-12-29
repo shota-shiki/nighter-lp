@@ -407,7 +407,7 @@ header.scrolled .hamburger span {
 #top {
     height: 100vh;
     min-height: 600px;
-    background-image: url('../img/nighter/hero_pc.jpg');
+    background-image: url('../img/nighter/hero-bg-pc.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -599,7 +599,7 @@ header.scrolled .hamburger span {
     #top {
         height: auto;
         min-height: 100vh;
-        background-image: url('../img/nighter/hero_sp.jpg');
+        background-image: url('../img/nighter/hero-bg-sp.jpg');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -863,6 +863,18 @@ section h2::after {
 
 #examples .scroll-container {
     justify-content: flex-start;
+}
+
+#examples .scroll-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#examples .scroll-container::-webkit-scrollbar-thumb {
+    background: white;
+}
+
+#examples .scroll-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8);
 }
 
 /* 利用方法セクション */
