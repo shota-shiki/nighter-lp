@@ -421,7 +421,7 @@ header.scrolled .hamburger span {
 .hero-content {
     position: absolute;
     left: 0;
-    top: 180px;
+    top: 200px;
     bottom: 140px;
     width: 50%;
     display: flex;
@@ -790,7 +790,7 @@ section h2::after {
 }
 
 #features .image-placeholder p {
-    font-size: 32px;
+    font-size: 24px;
     border-top: 2px solid #00008b;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -850,7 +850,7 @@ section h2::after {
 
 #examples .image-placeholder p {
     color: white;
-    font-size: 32px;
+    font-size: 24px;
     border-top: 2px solid #fff;
     padding-top: 10px;
     padding-bottom: 10px;
