@@ -248,6 +248,7 @@ header.scrolled {
     width: auto;
     transition: all 0.3s ease;
     display: block;
+    margin-top: 6px;
 }
 
 .header-logo:hover {
