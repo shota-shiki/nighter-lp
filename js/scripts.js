@@ -218,7 +218,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!indicators) return;
 
         const dots = indicators.querySelectorAll('.indicator-dot');
-        const items = container.querySelectorAll('.image-placeholder');
+        // .image-placeholder または .news-card を取得
+        let items = container.querySelectorAll('.image-placeholder');
+        if (items.length === 0) {
+            items = container.querySelectorAll('.news-card');
+        }
 
         // スクロール位置に応じてアクティブなドットを更新
         function updateIndicators() {
