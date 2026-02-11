@@ -37,6 +37,21 @@
 </head>
 
 <body>
+    <div id="persona-select" class="persona-overlay">
+        <div class="persona-select-contents">
+            <h2>あなたはどちら？</h2>
+            <div class="persona-cards">
+                <button class="persona-card" data-persona="worker">
+                    <i class="fa-solid fa-user"></i>
+                    <span>働きたい</span>
+                </button>
+                <button class="persona-card" data-persona="employer">
+                    <i class="fa-solid fa-store"></i>
+                    <span>採用したい</span>
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="floatingMenu">
         <a href="https://night-er.com/signup?type=worker" target="_blank">
             <i class="fa-solid fa-user"></i>
@@ -65,6 +80,7 @@
                 <a href="#faq" class="nav-item">よくある質問</a>
                 <a href="#news" class="nav-item">ニュース</a>
                 <a href="https://night-er.com/login" class="login" target="_blank">ログイン</a>
+                <a href="https://night-er.com/signup" class="signup" target="_blank">新規登録</a>
             </nav>
         </div>
     </header>
@@ -76,67 +92,122 @@
                 </div>
             </div>
         </section>
-        <section id="features">
+        <section id="features" class="persona-hidden">
             <div class="featuresContents">
                 <h2>ナイターの特徴</h2>
-                <div class="scroll-container" data-scroll-indicator="features">
-                    <div class="image-placeholder">
-                        <dotlottie-player
-                            src="https://assets-v2.lottiefiles.com/a/bfbe61de-116d-11ee-b562-db083437b7aa/3gUno03s7L.lottie"
-                            background="transparent" speed="1.5" style="width: 200px; height: 200px;" loop
-                            autoplay></dotlottie-player>
-                        <p>すぐ働ける</p>
+                <div class="persona-content" data-persona="worker">
+                    <div class="scroll-container" data-scroll-indicator="features-worker">
+                        <div class="image-placeholder">
+                            <dotlottie-player
+                                src="https://assets-v2.lottiefiles.com/a/bfbe61de-116d-11ee-b562-db083437b7aa/3gUno03s7L.lottie"
+                                background="transparent" speed="1.5" style="width: 200px; height: 200px;" loop
+                                autoplay></dotlottie-player>
+                            <p>すぐ働ける</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <dotlottie-player
+                                src="https://assets-v2.lottiefiles.com/a/850ba856-116f-11ee-b2c9-c3ba288cf2db/rJuNKNurqq.lottie"
+                                background="transparent" speed="1" style="width: 200px; height: 200px;" loop
+                                autoplay></dotlottie-player>
+                            <p>高時給</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <dotlottie-player
+                                src="https://assets-v2.lottiefiles.com/a/8ba89446-d161-11ee-af12-b3fff5be9f15/KIwMHKf1Pp.lottie"
+                                background="transparent" speed="1" style="width: 200px; height: 200px;" loop
+                                autoplay></dotlottie-player>
+                            <p>即日払い</p>
+                        </div>
                     </div>
-                    <div class="image-placeholder">
-                        <dotlottie-player
-                            src="https://assets-v2.lottiefiles.com/a/850ba856-116f-11ee-b2c9-c3ba288cf2db/rJuNKNurqq.lottie"
-                            background="transparent" speed="1" style="width: 200px; height: 200px;" loop
-                            autoplay></dotlottie-player>
-                        <p>高時給</p>
-                    </div>
-                    <div class="image-placeholder">
-                        <dotlottie-player
-                            src="https://assets-v2.lottiefiles.com/a/8ba89446-d161-11ee-af12-b3fff5be9f15/KIwMHKf1Pp.lottie"
-                            background="transparent" speed="1" style="width: 200px; height: 200px;" loop
-                            autoplay></dotlottie-player>
-                        <p>即日払い</p>
+                    <div class="scroll-indicators" data-indicators="features-worker">
+                        <span class="indicator-dot active"></span>
+                        <span class="indicator-dot"></span>
+                        <span class="indicator-dot"></span>
                     </div>
                 </div>
-                <div class="scroll-indicators" data-indicators="features">
-                    <span class="indicator-dot active"></span>
-                    <span class="indicator-dot"></span>
-                    <span class="indicator-dot"></span>
+                <div class="persona-content" data-persona="employer">
+                    <div class="scroll-container" data-scroll-indicator="features-employer">
+                        <div class="image-placeholder">
+                            <dotlottie-player
+                                src="https://assets-v2.lottiefiles.com/a/d58212c8-1180-11ee-a508-47f13f04bea1/wwxHaQLyKA.lottie"
+                                background="transparent" style="width: 200px; height: 200px;" loop
+                                autoplay></dotlottie-player>
+                            <p>すぐ見つかる</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <dotlottie-player
+                                src="https://assets-v2.lottiefiles.com/a/c641fda8-1150-11ee-95b6-7ba56f9e80ce/6hlI3rN6kN.lottie"
+                                background="transparent" style="width: 200px; height: 200px;" loop
+                                autoplay></dotlottie-player>
+                            <p>無料で掲載</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <dotlottie-player
+                                src="https://assets-v2.lottiefiles.com/a/eda0307a-1175-11ee-921c-b7da1abaee23/0Gf9Bp9us7.lottie"
+                                background="transparent" speed="1.5" style="width: 200px; height: 200px;" loop
+                                autoplay></dotlottie-player>
+                            <p>即戦力も多数</p>
+                        </div>
+                    </div>
+                    <div class="scroll-indicators" data-indicators="features-employer">
+                        <span class="indicator-dot active"></span>
+                        <span class="indicator-dot"></span>
+                        <span class="indicator-dot"></span>
+                    </div>
                 </div>
             </div>
         </section>
-        <section id="examples">
+        <section id="examples" class="persona-hidden">
             <div class="examplesContents">
                 <h2>仕事例</h2>
-                <div class="scroll-container" data-scroll-indicator="examples">
-                    <div class="image-placeholder">
-                        <img src="img/nighter/bartender.jpg" alt="バーテンダー">
-                        <p>バーテンダー</p>
+                <div class="persona-content" data-persona="worker">
+                    <div class="scroll-container" data-scroll-indicator="examples-worker">
+                        <div class="image-placeholder">
+                            <img src="img/nighter/bartender.jpg" alt="バーテンダー">
+                            <p>バーテンダー</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <img src="img/nighter/security.jpg" alt="セキュリティ">
+                            <p>セキュリティ</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <img src="img/nighter/boy.jpg" alt="ホールスタッフ">
+                            <p>ホールスタッフ</p>
+                        </div>
                     </div>
-                    <div class="image-placeholder">
-                        <img src="img/nighter/security.jpg" alt="セキュリティ">
-                        <p>セキュリティ</p>
-                    </div>
-                    <div class="image-placeholder">
-                        <img src="img/nighter/boy.jpg" alt="ホールスタッフ">
-                        <p>ホールスタッフ</p>
+                    <div class="scroll-indicators" data-indicators="examples-worker">
+                        <span class="indicator-dot active"></span>
+                        <span class="indicator-dot"></span>
+                        <span class="indicator-dot"></span>
                     </div>
                 </div>
-                <div class="scroll-indicators" data-indicators="examples">
-                    <span class="indicator-dot active"></span>
-                    <span class="indicator-dot"></span>
-                    <span class="indicator-dot"></span>
+                <div class="persona-content" data-persona="employer">
+                    <div class="scroll-container" data-scroll-indicator="examples-employer">
+                        <div class="image-placeholder">
+                            <img src="img/nighter/bar.jpg" alt="バー">
+                            <p>バー</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <img src="img/nighter/nightclub.jpg" alt="ナイトクラブ">
+                            <p>ナイトクラブ</p>
+                        </div>
+                        <div class="image-placeholder">
+                            <img src="img/nighter/snack.jpg" alt="スナック">
+                            <p>スナック</p>
+                        </div>
+                    </div>
+                    <div class="scroll-indicators" data-indicators="examples-employer">
+                        <span class="indicator-dot active"></span>
+                        <span class="indicator-dot"></span>
+                        <span class="indicator-dot"></span>
+                    </div>
                 </div>
             </div>
         </section>
-        <section id="howto">
+        <section id="howto" class="persona-hidden">
             <div class="howtoContents">
                 <h2>ご利用方法・料金</h2>
-                <div class="howtoUser">
+                <div class="howtoUser persona-content" data-persona="worker">
                     <h3>ワーカー</h3>
                     <h4>無料</h4>
                     <p>■ 法令遵守の優良店舗が多数掲載！</p>
@@ -178,7 +249,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="howtoUser">
+                <div class="howtoUser persona-content" data-persona="employer">
                     <h3>事業者</h3>
                     <h4>無料</h4>
                     <p>■ 手が足りない時の強い味方！</p>
@@ -223,13 +294,9 @@
                 </div>
             </div>
         </section>
-        <section id="faq">
+        <section id="faq" class="persona-hidden">
             <div class="faqContents">
                 <h2>よくある質問</h2>
-                <div class="tabs">
-                    <button class="tab-button active" data-tab="worker">ワーカー</button>
-                    <button class="tab-button" data-tab="employer">事業者</button>
-                </div>
                 <div id="worker" class="tab-content active">
                     <div class="accordion">
                         <div class="accordion-item">
@@ -362,7 +429,7 @@
                 </div>
             </div>
         </section>
-        <section id="news">
+        <section id="news" class="persona-hidden">
             <div class="newsContents">
                 <h2>ニュース</h2>
                 <div class="news-list">
@@ -405,8 +472,8 @@
                 <div class="footer-logo-placeholder">
                     <img src="img/nighter/footer-logo.png" alt="Nighter">
                 </div>
-                <a href="https://night-er.com/workers/login" target="_blank">ワーカーログイン</a>
-                <a href="https://night-er.com/employers/login" target="_blank">事業者ログイン</a>
+                <a href="https://night-er.com/workers/login" target="_blank" class="footer-login" data-persona="worker">ワーカーでログイン</a>
+                <a href="https://night-er.com/employers/login" target="_blank" class="footer-login" data-persona="employer">事業者でログイン</a>
             </div>
             <div class="footerRight">
                 <h2>その他メニュー</h2>

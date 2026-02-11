@@ -125,16 +125,75 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     updateHeaderBackground();
 
-    // よくある質問（タブ切り替え）
-    const tabs = document.querySelectorAll('.tab-button');
-    const contents = document.querySelectorAll('.tab-content');
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const target = tab.dataset.tab;
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
-            tab.classList.add('active');
-            document.getElementById(target).classList.add('active');
+    // ペルソナ選択機能
+    let currentPersona = null;
+    const personaOverlay = document.getElementById('persona-select');
+    const personaCards = document.querySelectorAll('.persona-card');
+    const personaHiddenElements = document.querySelectorAll('.persona-hidden');
+    const personaContents = document.querySelectorAll('.persona-content');
+    const faqContents = document.querySelectorAll('.tab-content');
+
+    function selectPersona(persona) {
+        currentPersona = persona;
+
+        // オーバーレイをフェードアウト
+        if (personaOverlay) {
+            personaOverlay.classList.add('hidden');
+            setTimeout(() => {
+                personaOverlay.style.display = 'none';
+            }, 500);
+        }
+
+        // persona-content要素の表示/非表示
+        personaContents.forEach(el => {
+            el.classList.toggle('active', el.dataset.persona === persona);
+        });
+
+        // 隠れていたセクション群を表示
+        personaHiddenElements.forEach(el => {
+            el.classList.remove('persona-hidden');
+        });
+
+        // FAQ を対応するタブに自動切替
+        faqContents.forEach(c => c.classList.remove('active'));
+        const targetFaq = document.getElementById(persona);
+        if (targetFaq) {
+            targetFaq.classList.add('active');
+        }
+
+        // ページトップへスクロール
+        window.scrollTo({ top: 0 });
+
+        // フローティングメニューをペルソナに応じて更新
+        if (floatingMenu) {
+            const workerLink = floatingMenu.querySelector('a[href*="worker"]');
+            const employerLink = floatingMenu.querySelector('a[href*="employer"]');
+            if (workerLink && employerLink) {
+                if (persona === 'worker') {
+                    workerLink.style.display = 'flex';
+                    workerLink.style.width = '100%';
+                    employerLink.style.display = 'none';
+                } else {
+                    employerLink.style.display = 'flex';
+                    employerLink.style.width = '100%';
+                    workerLink.style.display = 'none';
+                }
+            }
+        }
+
+        // フッターログインをペルソナに応じて更新
+        document.querySelectorAll('.footer-login').forEach(link => {
+            link.style.display = link.dataset.persona === persona ? 'block' : 'none';
+        });
+
+        // ドットインジケーターを再初期化
+        initScrollIndicators();
+    }
+
+    // ペルソナカードクリック
+    personaCards.forEach(card => {
+        card.addEventListener('click', () => {
+            selectPersona(card.dataset.persona);
         });
     });
 
@@ -209,59 +268,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ドットインジケーター機能
-    const scrollContainers = document.querySelectorAll('.scroll-container[data-scroll-indicator]');
+    function initScrollIndicators() {
+        const scrollContainers = document.querySelectorAll('.scroll-container[data-scroll-indicator]');
 
-    scrollContainers.forEach(container => {
-        const indicatorId = container.dataset.scrollIndicator;
-        const indicators = document.querySelector(`.scroll-indicators[data-indicators="${indicatorId}"]`);
+        scrollContainers.forEach(container => {
+            const indicatorId = container.dataset.scrollIndicator;
+            const indicators = document.querySelector(`.scroll-indicators[data-indicators="${indicatorId}"]`);
 
-        if (!indicators) return;
+            if (!indicators) return;
 
-        const dots = indicators.querySelectorAll('.indicator-dot');
-        // .image-placeholder または .news-card を取得
-        let items = container.querySelectorAll('.image-placeholder');
-        if (items.length === 0) {
-            items = container.querySelectorAll('.news-card');
-        }
+            // 非表示コンテナはスキップ
+            if (container.offsetParent === null) return;
 
-        // スクロール位置に応じてアクティブなドットを更新
-        function updateIndicators() {
-            const scrollLeft = container.scrollLeft;
-            const itemWidth = items[0].offsetWidth;
-            const gap = 30; // CSSのgapと同じ値
+            const dots = indicators.querySelectorAll('.indicator-dot');
+            // .image-placeholder または .news-card を取得
+            let items = container.querySelectorAll('.image-placeholder');
+            if (items.length === 0) {
+                items = container.querySelectorAll('.news-card');
+            }
 
-            // 現在のアイテムインデックスを計算
-            const currentIndex = Math.round(scrollLeft / (itemWidth + gap));
+            if (items.length === 0) return;
 
-            // すべてのドットを非アクティブにして、現在のドットだけアクティブに
-            dots.forEach((dot, index) => {
-                if (index === currentIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        // スクロールイベントをthrottleで最適化
-        const throttledUpdateIndicators = throttle(updateIndicators);
-        container.addEventListener('scroll', throttledUpdateIndicators, { passive: true });
-
-        // ドットをクリックして該当のアイテムにスクロール
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
+            // スクロール位置に応じてアクティブなドットを更新
+            function updateIndicators() {
+                const scrollLeft = container.scrollLeft;
                 const itemWidth = items[0].offsetWidth;
                 const gap = 30; // CSSのgapと同じ値
-                const scrollPosition = index * (itemWidth + gap);
 
-                container.scrollTo({
-                    left: scrollPosition,
-                    behavior: 'smooth'
+                // 現在のアイテムインデックスを計算
+                const currentIndex = Math.round(scrollLeft / (itemWidth + gap));
+
+                // すべてのドットを非アクティブにして、現在のドットだけアクティブに
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            // スクロールイベントをthrottleで最適化
+            const throttledUpdateIndicators = throttle(updateIndicators);
+            container.addEventListener('scroll', throttledUpdateIndicators, { passive: true });
+
+            // ドットをクリックして該当のアイテムにスクロール
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    const itemWidth = items[0].offsetWidth;
+                    const gap = 30; // CSSのgapと同じ値
+                    const scrollPosition = index * (itemWidth + gap);
+
+                    container.scrollTo({
+                        left: scrollPosition,
+                        behavior: 'smooth'
+                    });
                 });
             });
-        });
 
-        // 初期状態を設定
-        updateIndicators();
-    });
+            // 初期状態を設定
+            updateIndicators();
+        });
+    }
+
+    initScrollIndicators();
 });
