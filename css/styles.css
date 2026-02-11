@@ -153,28 +153,7 @@ body {
     transform: translateY(0);
 }
 
-.floatingMenu a:first-child {
-    width: 50%;
-    background-color: #00008b;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    height: 60px;
-    border: 1px solid lightgray;
-    border-right: none;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.floatingMenu a:first-child:hover {
-    background-color: #00006b;
-    color: white;
-}
-
-.floatingMenu a:last-child {
+.floatingMenu a {
     width: 50%;
     background-color: #00008b;
     color: white;
@@ -189,7 +168,7 @@ body {
     gap: 8px;
 }
 
-.floatingMenu a:last-child:hover {
+.floatingMenu a:hover {
     background-color: #00006b;
     color: white;
 }
@@ -199,8 +178,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-    .floatingMenu a:first-child,
-    .floatingMenu a:last-child {
+    .floatingMenu a {
         font-size: 16px;
         padding: 1em 0;
     }
