@@ -836,7 +836,21 @@ section h2::after {
 }
 
 #features .scroll-container {
-    justify-content: flex-start;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    #features .scroll-container {
+        justify-content: flex-start;
+        scroll-snap-type: x mandatory;
+        padding-inline: calc((100% - 280px) / 2);
+    }
+
+    #features .image-placeholder {
+        scroll-snap-align: center;
+        flex-shrink: 0;
+        width: 280px;
+    }
 }
 
 /* 仕事例セクション */
@@ -897,7 +911,19 @@ section h2::after {
 }
 
 #examples .scroll-container {
-    justify-content: flex-start;
+    justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+    #examples .scroll-container {
+        justify-content: flex-start;
+        scroll-snap-type: x mandatory;
+        padding-inline: calc((100% - 280px) / 2);
+    }
+
+    #examples .image-placeholder {
+        scroll-snap-align: center;
+    }
 }
 
 #examples .indicator-dot {
