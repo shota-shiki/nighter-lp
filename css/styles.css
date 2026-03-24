@@ -395,13 +395,14 @@ header.scrolled .hamburger span {
     flex-direction: column;
     justify-content: flex-start;
     padding: 0 40px;
-    gap: 20px;
+    gap: 60px;
 }
 
 .hero-title {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    margin-bottom: 60px;
 }
 
 .hero-title img {
@@ -411,15 +412,15 @@ header.scrolled .hamburger span {
 }
 
 .hero-main-copy {
-    font-size: 28px;
+    font-size: 40px;
     font-weight: bold;
     color: white;
-    line-height: 1.5;
+    line-height: 1.9;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
     white-space: nowrap;
 }
 
-.hero-main-copy br {
+.hero-copy-sp {
     display: none;
 }
 
@@ -430,10 +431,14 @@ header.scrolled .hamburger span {
 }
 
 .hero-sub-copy {
-    font-size: 19px;
+    font-size: 20px;
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.7;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.hero-sub-copy br {
+    display: none;
 }
 
 /* ヒーロー内ペルソナコンテンツのフェードイン */
@@ -459,6 +464,7 @@ header.scrolled .hamburger span {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        padding-bottom: 200px;
     }
 
     .hero-content {
@@ -467,7 +473,7 @@ header.scrolled .hamburger span {
         top: auto;
         bottom: auto;
         padding: 0 20px;
-        gap: 20px;
+        gap: 30px;
     }
 
     .hero-title {
@@ -480,8 +486,17 @@ header.scrolled .hamburger span {
     }
 
     .hero-main-copy {
-        font-size: 26px;
+        font-size: 36px;
+        line-height: normal;
         white-space: normal;
+    }
+
+    .hero-copy-pc {
+        display: none;
+    }
+
+    .hero-copy-sp {
+        display: inline;
     }
 
     .hero-main-copy br {
@@ -489,7 +504,11 @@ header.scrolled .hamburger span {
     }
 
     .hero-sub-copy {
-        font-size: 17px;
+        font-size: 18px;
+    }
+
+    .hero-sub-copy br {
+        display: inline;
     }
 
 }
@@ -498,11 +517,11 @@ header.scrolled .hamburger span {
 @media screen and (max-width: 375px) and (max-height: 667px) {
     #top {
         justify-content: flex-end;
-        padding: 0 0 50px 0;
+        padding-bottom: 150px;
     }
 
     .hero-content {
-        gap: 14px;
+        gap: 20px;
     }
 
     .hero-title img {
@@ -510,11 +529,11 @@ header.scrolled .hamburger span {
     }
 
     .hero-main-copy {
-        font-size: 20px;
+        font-size: 32px;
     }
 
     .hero-sub-copy {
-        font-size: 14px;
+        font-size: 16px;
         line-height: 1.6;
     }
 
