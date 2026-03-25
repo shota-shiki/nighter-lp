@@ -425,7 +425,7 @@ header.scrolled .hamburger span {
 }
 
 .hero-marker {
-    background: linear-gradient(transparent 55%, rgba(254, 215, 0, 0.75) 55%);
+    background: linear-gradient(transparent 55%, rgba(0, 200, 255, 0.65) 55%);
     padding-bottom: 2px;
     display: inline;
 }
@@ -447,9 +447,63 @@ header.scrolled .hamburger span {
     opacity: 0;
 }
 
-#top .hero-sub-copy-wrapper.active {
-    animation: fadeInUp 0.6s ease-out 0.15s forwards;
+#top .hero-cta-wrapper.active {
+    animation: fadeInUp 0.6s ease-out 0.08s forwards;
     opacity: 0;
+}
+
+#top .hero-sub-copy-wrapper.active {
+    animation: fadeInUp 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+}
+
+/* ヒーローCTAボタン */
+.hero-cta {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-cta-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fed700;
+    color: #00008b;
+    font-weight: bold;
+    font-size: 26px;
+    padding: 23px 62px;
+    min-width: 420px;
+    border-radius: 100px;
+    border: 3px solid #fff;
+    box-shadow: 0 6px 0 #a89200, 0 6px 20px rgba(254, 215, 0, 0.4);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-cta-btn:hover {
+    background: #e6c200;
+    box-shadow: none;
+    transform: translateY(6px);
+}
+
+.hero-cta-icon {
+    margin-right: 10px;
+    font-size: 23px;
+}
+
+.hero-cta-tag {
+    position: absolute;
+    top: -1.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    color: #1B1B1B;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 4px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
 }
 
 /* ヒーローセクション: 1024pxまでSP版表示 */
@@ -464,7 +518,7 @@ header.scrolled .hamburger span {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding-bottom: 150px;
+        padding-bottom: 130px;
     }
 
     .hero-content {
@@ -511,13 +565,25 @@ header.scrolled .hamburger span {
         display: inline;
     }
 
+    .hero-cta {
+        justify-content: center;
+        margin-top: 16px;
+    }
+
+    .hero-cta-btn {
+        font-size: 17px;
+        padding: 16px 32px;
+        min-width: unset;
+        width: 90%;
+    }
+
 }
 
 /* iPhone SE (4.7インチ, 375×667px) 専用スタイル */
 @media screen and (max-width: 375px) and (max-height: 667px) {
     #top {
         justify-content: flex-end;
-        padding-bottom: 100px;
+        padding-bottom: 80px;
     }
 
     .hero-content {
@@ -535,6 +601,17 @@ header.scrolled .hamburger span {
     .hero-sub-copy {
         font-size: 16px;
         line-height: 1.6;
+    }
+
+    .hero-cta {
+        margin-top: 12px;
+    }
+
+    .hero-cta-btn {
+        font-size: 15px;
+        padding: 14px 24px;
+        min-width: unset;
+        width: 90%;
     }
 
 }
