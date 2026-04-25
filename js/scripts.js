@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // 最適化: 現在のセクションを見つけたら早期リターン
         for (let i = sections.length - 1; i >= 0; i--) {
             const section = sections[i];
+            if (section.offsetParent === null) continue; // display:none のセクションはスキップ
             const sectionTop = section.offsetTop;
             if (scrollY >= sectionTop) {
                 current = section.getAttribute('id');
